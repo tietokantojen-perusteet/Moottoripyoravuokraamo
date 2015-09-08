@@ -49,21 +49,15 @@ public class Main {
         System.out.println("Apuvälineitä päivämäärien käsittelyyn:");
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Timestamp ts = new Timestamp(dateFormat.parse("07-09-2015 16:00:00").getTime());
-        System.out.println(ts);
-        System.out.println(ts.getTime());
 
-        ts = new Timestamp(dateFormat.parse("14-09-2015 10:00:00").getTime());
-        System.out.println(ts.getTime());
-
-        System.out.println("");
         System.out.println("Tietyn päivämäärän jälkeen::");
         for (Varaus v : varausDao.findAllWithStartAfter(new Timestamp(dateFormat.parse("07-09-2014 16:00:00").getTime()))) {
             System.out.println(v.getPyora() + " " + v.getVaraaja() + " " + v.getVarausAlkaa() + " " + v.getVarausLoppuu());
         }
 
-        System.out.println("");
-        System.out.println("");
-
-        // ts.getTime()
+        System.out.println("Tietyn päivämäärän jälkeen::");
+        for (Varaus v : varausDao.findAllWithStartAfter(ts)) {
+            System.out.println(v.getPyora() + " " + v.getVaraaja() + " " + v.getVarausAlkaa() + " " + v.getVarausLoppuu());
+        }
     }
 }
